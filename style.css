@@ -6,9 +6,41 @@ body {
   text-align: center;
 }
 
-.container {
-  padding: 50px;
+.head {
+  display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    background-color: #800517;
+    color: #E5CF85;
+    font-family: 'Playfair Display', serif; 
+   
+    
 }
+.home{
+  grid-row: span 5/ span 5;
+  font-size: 5vw;
+
+  
+}
+.about{
+  grid-row: span 5/ span 5;
+  font-size: 5vw;
+}
+.icon{
+   grid-row: span 5/ span 5;
+}
+.menu{
+  grid-row: span 5/ span 5;
+  font-size: 5vw;
+}
+
+.contact{
+   grid-row: span 5/ span 5;
+   font-size: 5vw;
+}
+
+
+
 
 h1 {
   color: #333;
