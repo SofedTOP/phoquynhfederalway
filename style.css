@@ -5,11 +5,13 @@ body {
   padding: 0;
   text-align: center;
 }
-
+a{color:#E5CF85;
+  text-decoration: none;}
+a:hover{color: #E5CF85}
 .head {
   display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     background-color: #800517;
     color: #E5CF85;
     font-family: 'Playfair Display', serif; 
