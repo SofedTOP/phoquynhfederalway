@@ -8,7 +8,7 @@ body {
 a{color:#E5CF85;
   text-decoration: none;}
 a:hover{color: #E5CF85}
-.head {
+header {
   display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(1, 1fr);
