@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-<link  href="style.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pho Quynh</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
-      <div class = "home">
-        <a href="index.html">Home</a>
-    
-      </div>
-      <div class="about">
-          <a href="about.html">About</a>
-
-
-      </div>
-    
-      <div class = "icon">
-
-
-      </div>
-    
-      <div class = "menu">
-         <a href="menu.html">Menu</a>
-
-
-      </div>
-   
-    
-      <div class = "contact">
-        <a href="contact.html">Contact</a>
-
-
-      </div>
-   
-
-
+    <div class="container header-container">
+      <h1 class="logo">Pho Quynh</h1>
+      <nav>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
- 
-  <p>Home</p>
-  
-  <script src="Javascript.js"></script>
 
+  <section id="home" class="hero">
+    <div class="container">
+      <h2>Welcome to Pho Quynh</h2>
+      <p>Authenic Vietnamese Restaurant</p>
+    </div>
+  </section>
+
+  <section id="menu" class="section">
+    <div class="container">
+      <h2>Menu</h2>
+      <div class="menu-grid">
+        
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>31434 Pacific Hwy S, Federal Way, WA 98003</p>
+      <p>Email: phoquynhfederalwaywa@gmail.com</p>
+      <p>Phone: 253 529-2241</p>
+    </div>
+  </section>
+
+  
+
+  <script src="script.js"></script>
 </body>
 </html>
