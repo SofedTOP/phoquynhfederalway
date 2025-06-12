@@ -48,3 +48,12 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
     }
   });
 }
+document.querySelectorAll('.category li').forEach(item => {
+  item.addEventListener('touchstart', () => {
+    item.style.transform = 'scale(0.97)';
+  });
+
+  item.addEventListener('touchend', () => {
+    item.style.transform = '';
+  });
+});

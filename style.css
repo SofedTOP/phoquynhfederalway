@@ -292,7 +292,7 @@ footer {
 }
 
 /* Description base (hidden) */
-.item-description {
+..item-description {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.8);
@@ -304,21 +304,47 @@ footer {
   text-align: center;
   font-size: 0.95rem;
   border-radius: var(--radius);
+
+  /* Smooth transition */
   opacity: 0;
+  transform: scale(0.98);
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px); /* Optional blur */
+
 }
 
-/* Show on hover for PC */
+/* On hover or show-description class */
+.category li.show-description .item-description,
 @media (hover: hover) and (pointer: fine) {
   .category li:hover .item-description {
     opacity: 1;
+    transform: scale(1);
     pointer-events: auto;
   }
 }
+.category li {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow);
+}
 
-/* Show when tapped (JS adds this class) */
-.category li.show-description .item-description {
+.category li:hover,
+.category li:focus-within {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links {
+  transition: all 0.3s ease;
+  transform: scaleY(0);
+  transform-origin: top;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-links.show {
+  transform: scaleY(1);
   opacity: 1;
   pointer-events: auto;
 }
