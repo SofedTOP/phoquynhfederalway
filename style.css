@@ -346,3 +346,13 @@ footer {
   opacity: 1;
   pointer-events: auto;
 }
+.category {
+  max-height:99999 px; /* or some large height */
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.category.collapsed {
+  max-height: 0;
+  overflow: hidden;
+}

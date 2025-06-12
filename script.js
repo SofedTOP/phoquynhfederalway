@@ -57,3 +57,6 @@ document.querySelectorAll('.category li').forEach(item => {
     item.style.transform = '';
   });
 });
+document.querySelectorAll('.category').forEach(cat => {
+  cat.classList.add('collapsed');
+});
