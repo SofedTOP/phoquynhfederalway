@@ -3,7 +3,6 @@
   --color-secondary: #fff8f0;    /* Background */
   --color-accent: #e8e8e8;       /* Light gray */
   --color-dark: #333333;         /* Dark text */
-  --color-light: #ffffff;        /* White text */
   --color-hover: #ffd9d9;        /* Light red for hover */
 
   --radius: 8px;
@@ -11,6 +10,7 @@
   --transition: 0.3s ease;
 }
 
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -28,16 +28,11 @@ body {
   line-height: 1.6;
 }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 1rem 0;
-}
+
 
 header {
   background-color: var(--color-primary);
-  color: var(--color-light);
+  color: var(--color-secondary); /* was color-light */
   padding: 1rem 0;
   position: sticky;
   top: 0;
@@ -53,6 +48,30 @@ header {
   max-width: none;
   padding: 0 2rem;
 }
+.container {
+  padding-left: 5vw;   /* 5% of viewport width */
+  padding-right: 5vw;
+  max-width: 100%;
+  width: 100%;
+}
+
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-left,
+.hero-right {
+  max-width: 48%;
+  padding: 0 4rem; /* Adds horizontal padding inside text blocks */
+}
+.hero-right {
+  text-align: right;
+}
+
+
 
 .logo {
   font-size: 2rem;
@@ -66,7 +85,7 @@ nav {
 .menu-btn {
   font-size: 2rem;
   background: none;
-  color: var(--color-light);
+  color: var(--color-secondary); /* was color-light */
   border: none;
   cursor: pointer;
   display: none;
@@ -74,36 +93,51 @@ nav {
 }
 
 .nav-links {
- list-style: none;
+  list-style: none;
   display: flex;
   gap: 4rem;
 }
 
 .nav-links a {
-  color: var(--color-light);
+  position: relative;
+  color: var(--color-secondary); /* was color-light */
   text-decoration: none;
   font-weight: 600;
   transition: color var(--transition);
+  font-size: 2vh;
+  right: 3vh;
 }
+
 .nav-links a:hover {
   color: var(--color-hover);
 }
 
+
 .hero {
-  background: url('pexels-quang-nguyen-vinh-222549-2133989.jpg') center/cover no-repeat;
-  text-align: center;
-  padding: 6rem 1rem;
-  height: 100vh;
-  color: var(--color-light);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  position: relative;
+  color: white; /* Or a contrasting color */
+  background: url('pexels-quang-nguyen-vinh-222549-2133989.jpg') no-repeat center center/cover;
+  height: 400px; /* or your desired height */
 }
 
-.hero h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* black overlay with 50% opacity */
+  z-index: 1;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+
+
+.hero h2, .hero p {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 .section {
@@ -125,12 +159,30 @@ nav {
 }
 
 .menu-cate > li > h1 {
-  margin: 2rem 0 1rem;
+  margin: 1rem 0;
   font-size: 2rem;
   color: var(--color-primary);
-  border-bottom: 2px solid var(--color-primary);
-  display: inline-block;
-  padding-bottom: 0.3rem;
+  background-color: var(--color-accent);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  width: 100vw;
+  max-width: 100vw;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border-bottom: none;
+
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.container {
+  --container-padding: 2rem;
 }
 
 .category {
@@ -141,6 +193,15 @@ nav {
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.category.collapsed {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
 }
 
 .category li {
@@ -149,7 +210,6 @@ nav {
   background: var(--color-accent);
   border: 2px solid var(--color-primary);
   border-radius: var(--radius);
-  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -160,13 +220,9 @@ nav {
   background-size: cover;
   background-position: center;
   color: var(--color-dark);
-}
-
-
-
-.category li:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  display: flex;
 }
 
 .contact p {
@@ -176,7 +232,7 @@ nav {
 /* Footer */
 footer {
   background-color: var(--color-primary);
-  color: var(--color-light);
+  color: var(--color-secondary); /* was color-light */
   text-align: center;
   padding: 1rem 0;
   margin-top: 2rem;
@@ -204,12 +260,34 @@ footer {
     display: block;
   }
 
-  .category li {
-    width: 80vw;
-    font-size: 1rem;
-  }
-
   .hero h2 {
     font-size: 2rem;
   }
+}
+
+.category li span {
+  pointer-events: none;
+}
+
+.item-description {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7); /* No color var here */
+  color: var(--color-secondary); /* was color-light */
+  padding: 1rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  line-height: 1.2;
+  overflow-y: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category li:hover .item-description {
+  display: flex;
+  opacity: 1;
 }
