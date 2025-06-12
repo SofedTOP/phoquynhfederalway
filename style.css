@@ -291,3 +291,15 @@ footer {
   display: flex;
   opacity: 1;
 }
+.category li .item-description {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+
+.category li:focus-within .item-description,
+.category li.show-description .item-description {
+  display: flex;
+  opacity: 1;
+}

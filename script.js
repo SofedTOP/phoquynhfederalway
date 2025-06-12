@@ -21,3 +21,17 @@ document.querySelectorAll('.menu-cate > li > h1').forEach(h1 => {
       li.classList.toggle('active');
     });
   });
+  document.querySelectorAll('.category li').forEach(item => {
+  item.addEventListener('click', () => {
+    // Toggle active class on tapped item
+    item.classList.toggle('show-description');
+  });
+});
+document.addEventListener('click', (e) => {
+  const isCategoryItem = e.target.closest('.category li');
+  document.querySelectorAll('.category li.show-description').forEach(item => {
+    if (item !== isCategoryItem) {
+      item.classList.remove('show-description');
+    }
+  });
+});
