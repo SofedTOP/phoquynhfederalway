@@ -3,7 +3,7 @@ function toggleMenu() {
   links.classList.toggle('show');
 }
 
-// Expand/collapse sections
+// Expand/collapse menu categories
 document.querySelectorAll('.menu-cate > li > h1').forEach(h1 => {
   h1.style.cursor = 'pointer';
   h1.addEventListener('click', () => {
@@ -15,33 +15,29 @@ document.querySelectorAll('.menu-cate > li > h1').forEach(h1 => {
   });
 });
 
-// Focusable items
+// Make items focusable
 document.querySelectorAll('.category li').forEach(item => {
   item.setAttribute('tabindex', '0');
 });
 
-// Show description on tap/click (mobile & PC), one at a time
+// Toggle item on tap/click, one open at a time
 document.querySelectorAll('.category li').forEach(item => {
   item.addEventListener('pointerdown', (e) => {
     if (e.target.tagName.toLowerCase() === 'a') return;
 
-    const isAlreadyOpen = item.classList.contains('show-description');
-
-    // Close all
+    // Close all others
     document.querySelectorAll('.category li.show-description').forEach(other => {
-      other.classList.remove('show-description');
+      if (other !== item) other.classList.remove('show-description');
     });
 
-    // If not already open, open it
-    if (!isAlreadyOpen) {
-      item.classList.add('show-description');
-    }
+    // Toggle current item
+    item.classList.toggle('show-description');
 
-    e.stopPropagation();
+    e.stopPropagation(); // Prevent closing by outside listener
   });
 });
 
-// Close if clicked outside
+// Close all if tapping outside
 document.addEventListener('pointerdown', (e) => {
   if (!e.target.closest('.category li')) {
     document.querySelectorAll('.category li.show-description').forEach(item => {
