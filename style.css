@@ -305,22 +305,22 @@ footer {
   font-size: 0.95rem;
   border-radius: var(--radius);
 
-  /* Smooth transition */
   opacity: 0;
   transform: scale(0.98);
   pointer-events: none;
   transition: opacity 0.4s ease, transform 0.4s ease;
+  will-change: opacity, transform;
+  z-index: 10;
 }
 
-/* On hover or show-description class */
-/* Show description when the list item has class 'show-description' */
+/* Show description if class added */
 .category li.show-description .item-description {
   opacity: 1;
   transform: scale(1);
   pointer-events: auto;
 }
 
-/* On devices that support hover, show description on hover */
+/* Show on hover for devices that support hover */
 @media (hover: hover) and (pointer: fine) {
   .category li:hover .item-description {
     opacity: 1;
@@ -329,17 +329,26 @@ footer {
   }
 }
 
-
+/* Hover and focus effects on list items */
 .category li {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: var(--shadow);
+  position: relative; /* ensure position context for .item-description */
 }
 
 .category li:hover,
 .category li:focus-within {
   transform: scale(1.03);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  outline: none; /* optional */
 }
+
+/* Keyboard focus visible */
+.category li:focus-within {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 
 .nav-links {
   transition: all 0.3s ease;
