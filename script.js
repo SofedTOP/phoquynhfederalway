@@ -3,11 +3,11 @@ function toggleMenu() {
   links.classList.toggle('show');
 }
 
-// Expand/collapse menu categories
+// Expand/collapse sections
 document.querySelectorAll('.menu-cate > li > h1').forEach(h1 => {
-  h1.style.cursor = 'pointer'; 
+  h1.style.cursor = 'pointer';
   h1.addEventListener('click', () => {
-    const categoryList = h1.nextElementSibling; 
+    const categoryList = h1.nextElementSibling;
     if (categoryList) {
       categoryList.classList.toggle('collapsed');
     }
@@ -15,29 +15,33 @@ document.querySelectorAll('.menu-cate > li > h1').forEach(h1 => {
   });
 });
 
-// Make menu items focusable for accessibility
+// Focusable items
 document.querySelectorAll('.category li').forEach(item => {
   item.setAttribute('tabindex', '0');
 });
 
-// Toggle description on click/tap (with pointerdown for instant mobile response)
+// Show description on tap/click (mobile & PC), one at a time
 document.querySelectorAll('.category li').forEach(item => {
   item.addEventListener('pointerdown', (e) => {
     if (e.target.tagName.toLowerCase() === 'a') return;
 
-    // Toggle only the clicked item
-    item.classList.toggle('show-description');
+    const isAlreadyOpen = item.classList.contains('show-description');
 
-    // Optional: close others when opening one
-    // document.querySelectorAll('.category li').forEach(other => {
-    //   if (other !== item) other.classList.remove('show-description');
-    // });
+    // Close all
+    document.querySelectorAll('.category li.show-description').forEach(other => {
+      other.classList.remove('show-description');
+    });
 
-    e.stopPropagation(); // Prevent bubbling to document
+    // If not already open, open it
+    if (!isAlreadyOpen) {
+      item.classList.add('show-description');
+    }
+
+    e.stopPropagation();
   });
 });
 
-// Close all if clicking/tapping outside
+// Close if clicked outside
 document.addEventListener('pointerdown', (e) => {
   if (!e.target.closest('.category li')) {
     document.querySelectorAll('.category li.show-description').forEach(item => {

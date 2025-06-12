@@ -285,11 +285,21 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
 
-.category li:hover .item-description,
+@media (hover: hover) and (pointer: fine) {
+  /* Only apply hover on devices that support it */
+  .category li:hover .item-description {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Toggled manually by JS */
 .category li.show-description .item-description {
   display: flex;
   opacity: 1;
+  pointer-events: auto;
 }
-
