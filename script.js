@@ -3,6 +3,7 @@ function toggleMenu() {
   links.classList.toggle('show');
 }
 
+// Handle category collapse
 document.querySelectorAll('.menu-cate > li > h1').forEach(h1 => {
   h1.style.cursor = 'pointer'; 
   h1.addEventListener('click', () => {
@@ -22,31 +23,25 @@ headers.forEach(header => {
   });
 });
 
-// Add tabindex to make li focusable on mobile
+// Make items focusable
 document.querySelectorAll('.category li').forEach(item => {
   item.setAttribute('tabindex', '0');
 });
 
-// Toggle description on click and touchstart
+// ✅ Use pointerdown for instant response on tap or click
 document.querySelectorAll('.category li').forEach(item => {
-  const toggleDescription = (e) => {
+  item.addEventListener('pointerdown', (e) => {
     if (e.target.tagName.toLowerCase() === 'a') return;
-    e.preventDefault(); // prevent default touch behavior
     item.classList.toggle('show-description');
-  };
-
-  item.addEventListener('click', toggleDescription);
-  item.addEventListener('touchstart', toggleDescription);
+    e.stopPropagation(); // Prevent bubbling to document
+  });
 });
 
-// Close descriptions when clicking or touching outside
-const closeDescriptions = (e) => {
+// Close if tapping outside
+document.addEventListener('pointerdown', (e) => {
   if (!e.target.closest('.category li')) {
     document.querySelectorAll('.category li.show-description').forEach(item => {
       item.classList.remove('show-description');
     });
   }
-};
-
-document.addEventListener('click', closeDescriptions);
-document.addEventListener('touchstart', closeDescriptions);
+});
