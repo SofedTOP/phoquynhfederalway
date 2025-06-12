@@ -292,7 +292,7 @@ footer {
 }
 
 /* Description base (hidden) */
-..item-description {
+.item-description {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.8);
@@ -310,9 +310,6 @@ footer {
   transform: scale(0.98);
   pointer-events: none;
   transition: opacity 0.4s ease, transform 0.4s ease;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px); /* Optional blur */
-
 }
 
 /* On hover or show-description class */
@@ -324,6 +321,7 @@ footer {
     pointer-events: auto;
   }
 }
+
 .category li {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: var(--shadow);
