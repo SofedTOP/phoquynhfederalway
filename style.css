@@ -271,35 +271,52 @@ footer {
 
 .item-description {
   display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7); /* No color var here */
-  color: var(--color-secondary); /* was color-light */
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--color-secondary);
   padding: 1rem;
   border-radius: var(--radius);
-  font-size: 0.85rem;
-  line-height: 1.2;
+  font-size: 0.95rem;
+  line-height: 1.4;
   overflow-y: auto;
-  opacity: 0;
-  transition: opacity 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+  text-align: center;
+
+  /* Nice appearance enhancements */
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+  transform: scale(0.98);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  /* Only apply hover on devices that support it */
-  .category li:hover .item-description {
-    display: flex;
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
-/* Toggled manually by JS */
 .category li.show-description .item-description {
   display: flex;
   opacity: 1;
   pointer-events: auto;
+  transform: scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .category li:hover .item-description {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+}
+
+.category li {
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.category li:hover {
+  transform: scale(1.03);
 }
