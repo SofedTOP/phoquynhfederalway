@@ -271,12 +271,25 @@ footer {
 
 .item-description {
   display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7); /* No color var here */
+  color: var(--color-secondary); /* was color-light */
+  padding: 1rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  line-height: 1.2;
+  overflow-y: auto;
   opacity: 0;
   transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   pointer-events: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
+  /* Only apply hover on devices that support it */
   .category li:hover .item-description {
     display: flex;
     opacity: 1;
@@ -284,6 +297,7 @@ footer {
   }
 }
 
+/* Toggled manually by JS */
 .category li.show-description .item-description {
   display: flex;
   opacity: 1;
