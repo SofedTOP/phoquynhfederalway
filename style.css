@@ -118,6 +118,7 @@ nav {
   color: white; /* Or a contrasting color */
   background: url('pexels-quang-nguyen-vinh-222549-2133989.jpg') no-repeat center center/cover;
   height: 400px; /* or your desired height */
+  animation: fadeIn 1.5s ease-in forwards;
 }
 
 .hero::before {
